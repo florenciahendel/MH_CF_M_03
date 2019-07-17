@@ -11,6 +11,9 @@ const Maps = () => import(/* webpackChunkName: "common" */ "@/pages/Maps.vue");
 const Typography = () => import(/* webpackChunkName: "common" */ "@/pages/Typography.vue");
 const TableList = () => import(/* webpackChunkName: "common" */ "@/pages/TableList.vue");
 const TestPage = () => import( /* webpackChunkName: "common" */ "@/pages/TestPage.vue");
+const Schedule = () => import( /* webpackChunkName: "common" */ "@/pages/Schedule.vue");
+const Fields = () => import( /* webpackChunkName: "common" */ "@/pages/Fields.vue");
+const Team = () => import( /* webpackChunkName: "common" */ "@/pages/Team.vue");
 
 const routes = [
   {
@@ -57,7 +60,22 @@ const routes = [
         path:"test-page",
         name:"test-page",
         component: TestPage
-      }       
+      },
+      {
+        path:"schedule",
+        name:"schedule",
+        component: Schedule
+      },
+      {
+        path: "team",
+        name: "team",
+        component: Team
+      },
+      {
+        path: "fields",
+        name: "fields",
+        component: Fields
+      }
     ]
   },
   { path: "*", component: NotFound },

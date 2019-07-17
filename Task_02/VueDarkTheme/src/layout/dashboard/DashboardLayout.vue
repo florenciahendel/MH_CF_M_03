@@ -2,6 +2,8 @@
   <div class="wrapper">
     <side-bar>
       <template slot="links">
+
+        <!-- Estas porquerías (los nombres que van a aparecer en el link) las encontrás, al final, en el archivo en.json -->
         <sidebar-link to="/dashboard" :name="$t('sidebar.dashboard')" icon="tim-icons icon-chart-pie-36"/>
         <sidebar-link to="/icons" :name="$t('sidebar.icons')" icon="tim-icons icon-atom"/>
         <sidebar-link to="/maps" :name="$t('sidebar.maps')" icon="tim-icons icon-pin"/>
@@ -10,6 +12,7 @@
         <sidebar-link to="/table-list" :name="$t('sidebar.tableList')" icon="tim-icons icon-puzzle-10"/>
         <sidebar-link to="/typography" :name="$t('sidebar.typography')" icon="tim-icons icon-align-center"/>
         <sidebar-link to="/dashboard?enableRTL=true" :name="$t('sidebar.rtlSupport')" icon="tim-icons icon-world"/>
+        <sidebar-link to="/test-page" :name="$t('sidebar.testPage')" icon="tim-icons icon-puzzle-10"/>
       </template>
     </side-bar>
     <div class="main-panel">

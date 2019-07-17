@@ -14,11 +14,11 @@
     "today": "Today",
     "dropdown": {
       "action": "Action",
-      "anotherAction": "Another Action",
-      "somethingElse": "Something else"
+      "anotherAction": "Otra cosa",
+      "somethingElse": "Algo más"
     },
     "usersTable": {
-      "title": "Simple Table",
+      "title": "Tabla sencilla",
       "columns": [
         "Name",
         "Country",
@@ -28,9 +28,9 @@
       "data": [
         {
           "id": 1,
-          "name": "Dakota Rice",
+          "name": "Dakota Fanning",
           "salary": "$36.738",
-          "country": "Niger",
+          "country": "Nigeria",
           "city": "Oud-Turnhout"
         },
         {
@@ -120,6 +120,7 @@
     "userProfile": "User Profile",
     "tableList": "Table List",
     "typography": "Typography",
-    "rtlSupport": "RTL Support"
+    "rtlSupport": "RTL Support",
+    "testPage":"Test Page Probando"
   }
 }

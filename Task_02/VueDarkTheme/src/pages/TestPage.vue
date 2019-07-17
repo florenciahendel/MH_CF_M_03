@@ -15,17 +15,6 @@
     },
     data() {
       return {
-        model: {
-          company: 'MindHub',
-          email: 'flor@email.com',
-          username: 'flor1234',
-          firstName: 'Florencia',
-          lastName: 'Hendel',
-          address: 'Dorrego 2124',
-          city: 'Buenos Aires',
-          country: 'Argentina',
-          about: 'Blablabla'
-        },
         user: {
           fullName: 'Florencia Hendel',
           title: 'Trainee',

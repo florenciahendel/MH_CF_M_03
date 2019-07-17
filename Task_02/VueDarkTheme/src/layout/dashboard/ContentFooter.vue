@@ -1,39 +1,42 @@
 <template>
-  <footer class="footer">
-    <div class="container-fluid">
+  <footer class="footer fixed-bottom bg-dark">
+    <div class="container-fluid bg-dark  text-align-center">
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link" href="http://www.creative-tim.com">
-            Creative Tim
+          <a class="nav-link" href="#/dashboard">
+            <i class="far fa-futbol fa-5x"></i>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://blog.creative-tim.com">
-            Blog
+          <a class="nav-link" href="#/schedule">
+            <i class="far fa-calendar-alt fa-5x"></i>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="http://www.creative-tim.com/license">
-            Licenses
+          <a class="nav-link" href="#/fields">
+            <i class="far fa-map fa-5x"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#/team">
+            <i class="far fa-handshake fa-5x"></i>
           </a>
         </li>
       </ul>
-      <div class="copyright">
-        © {{year}} made with <i class="tim-icons icon-heart-2"></i> by
-        <a href="https://www.binarcode.com" target="_blank" rel="noopener">Binar Code</a>&nbsp;&
-        <a href="https://www.creative-tim.com" target="_blank" rel="noopener">Creative Tim</a> for a better web.
-      </div>
     </div>
   </footer>
 </template>
 <script>
-  export default {
-    data() {
-      return {
-        year: new Date().getFullYear()
-      }
-    }
-  };
+export default {
+  data() {
+    return {
+      year: new Date().getFullYear()
+    };
+  }
+};
 </script>
-<style>
+<style scoped>
+.nav {
+  text-align: center;
+}
 </style>
