@@ -1,11 +1,11 @@
 <template>
-  <button type="button" class="btn btn-lg btn-block">
+  <base-button class="btn btn-lg btn-block">
     <div class="row">
       <div class="col-4">{{fecha}}</div>
-      <div class="col-4">{{local}} vs. {{visitante}}<p>{{lugar}}</p></div>
+      <div class="col-4">{{local}} vs. {{visitante}}<p>{{lugar.name}} - {{lugar.address}}</p></div>
       <div class="col-4">{{hora}}</div>
     </div>
-  </button>
+  </base-button>
 </template>
 
 <script>
