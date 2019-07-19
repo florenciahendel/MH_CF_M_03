@@ -25,8 +25,7 @@
         "City",
         "Salary"
       ],
-      "data": [
-        {
+      "data": [{
           "id": 1,
           "name": "Dakota Fanning",
           "salary": "$36.738",
@@ -77,8 +76,7 @@
         }
       ]
     },
-    "taskList": [
-      {
+    "taskList": [{
         "title": "Update the Documentation",
         "description": "Dwuamish Head, Seattle, WA 8:47 AM",
         "done": false
@@ -111,16 +109,18 @@
     ]
   },
   "sidebar": {
-    "title": "Creative Tim",
-    "shortTitle": "CT",
-    "dashboard": "dashboard",
+    "title": "Northside Youth Soccer League",
+    "shortTitle": "NYSL",
+    "dashboard": "Home",
     "icons": "Icons",
-    "maps": "Maps",
+    "fields": "Fields",
     "notifications": "Notifications",
     "userProfile": "User Profile",
     "tableList": "Table List",
     "typography": "Typography",
     "rtlSupport": "RTL Support",
-    "testPage":"Test Page Probando"
+    "testPage": "Test Page Probando",
+    "schedule": "Schedule",
+    "team": "Teams"
   }
 }

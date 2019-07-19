@@ -33,7 +33,7 @@
               <!-- <input type="text" class="form-control" placeholder="Search...">
               <div class="input-group-addon"><i class="tim-icons icon-zoom-split"></i></div> -->
               <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal">
-                <i class="tim-icons icon-zoom-split"></i>
+                <i class="fas fa-search fa-2x"></i>
               </button>
               <!-- You can choose types of search input -->
             </div>
@@ -49,7 +49,7 @@
                            title-tag="a" class="nav-item">
               <a slot="title" href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true">
                 <div class="notification d-none d-lg-block d-xl-block"></div>
-                <i class="tim-icons icon-sound-wave"></i>
+                <i class="fas fa-bell fa-2x"></i>
                 <p class="d-lg-none">
                   Notificaciones
                 </p>

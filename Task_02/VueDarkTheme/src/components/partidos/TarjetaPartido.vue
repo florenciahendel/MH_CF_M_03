@@ -1,13 +1,13 @@
 <template>
   <card style="width: 20rem;" class="text-center">
-    <h3 class="card-title">{{fecha}}</h3>
+    <h3 class="card-title">{{fecha.month}}/{{fecha.day}}</h3>
     <h4 class="card-subtitle">{{hora}}</h4>
     <hr />
     <p class="card-text display-4">{{local}} vs. {{visitante}}</p>
     <hr />
     <iframe class="embed-responsive" :src="lugar.mapEmbed"></iframe>
     <hr />
-    <a :href="lugar.mapURL" class="btn btn-primary">{{lugar.name}}</a>
+    <a :href="lugar.mapURL" class="btn btn-teal">{{lugar.name}}</a>
   </card>
 </template>
 

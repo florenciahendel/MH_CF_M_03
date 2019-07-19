@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-12">
         <card type="chart">
-          <template slot="header">
+<!--          <template slot="header">
             <div class="row">
               <div class="col-sm-6" :class="isRTL ? 'text-right' : 'text-left'">
                 <h5 class="card-category">{{$t('dashboard.totalShipments')}}</h5>
@@ -28,7 +28,7 @@
                 </div>
               </div>
             </div>
-          </template>
+          </template> 
           <div class="chart-area">
             <line-chart style="height: 100%"
                         ref="bigChart"
@@ -38,12 +38,12 @@
                         :gradient-stops="bigLineChart.gradientStops"
                         :extra-options="bigLineChart.extraOptions">
             </line-chart>
-          </div>
+          </div>-->
         </card>
       </div>
     </div>
     <div class="row">
-      <div class="col-lg-4" :class="{'text-right': isRTL}">
+    <!--  <div class="col-lg-4" :class="{'text-right': isRTL}">
         <card type="chart">
           <template slot="header">
             <h5 class="card-category">{{$t('dashboard.totalShipments')}}</h5>
@@ -59,8 +59,8 @@
             </line-chart>
           </div>
         </card>
-      </div>
-      <div class="col-lg-4" :class="{'text-right': isRTL}">
+      </div> -->
+<!--      <div class="col-lg-4" :class="{'text-right': isRTL}">
         <card type="chart">
           <template slot="header">
             <h5 class="card-category">{{$t('dashboard.dailySales')}}</h5>
@@ -75,8 +75,8 @@
             </bar-chart>
           </div>
         </card>
-      </div>
-      <div class="col-lg-4" :class="{'text-right': isRTL}">
+      </div> -->
+<!--      <div class="col-lg-4" :class="{'text-right': isRTL}">
         <card type="chart">
           <template slot="header">
             <h5 class="card-category">{{$t('dashboard.completedTasks')}}</h5>
@@ -91,10 +91,10 @@
             </line-chart>
           </div>
         </card>
-      </div>
+      </div> -->
     </div>
     <div class="row">
-      <div class="col-lg-6 col-md-12">
+<!--      <div class="col-lg-6 col-md-12">
         <card type="tasks" :header-classes="{'text-right': isRTL}">
           <template slot="header">
             <h6 class="title d-inline">{{$t('dashboard.tasks', {count: 5})}}</h6>
@@ -114,18 +114,19 @@
             <task-list></task-list>
           </div>
         </card>
-      </div>
-      <div class="col-lg-6 col-md-12">
+      </div> -->
+<!--      <div class="col-lg-6 col-md-12">
         <card class="card" :header-classes="{'text-right': isRTL}">
           <h4 slot="header" class="card-title">{{$t('dashboard.simpleTable')}}</h4>
           <div class="table-responsive">
             <user-table></user-table>
           </div>
         </card>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
+
 <script>
   import LineChart from '@/components/Charts/LineChart';
   import BarChart from '@/components/Charts/BarChart';

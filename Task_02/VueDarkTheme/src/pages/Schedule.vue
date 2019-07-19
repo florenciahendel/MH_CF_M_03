@@ -1,13 +1,14 @@
 <template>
   <div>
-    <ul class="nostyle">
+    <!-- Este es el componente de Sebas -->
+    <!-- <ul class="nostyle">
       <li v-for="partido in partidos">
         <partido-del-dia v-bind="partido"></partido-del-dia>
       </li>
-    </ul>
+    </ul>-->
 
     <ul class="nostyle flex">
-      <li v-for="partido in partidos">
+      <li class="d-inline-block m-1" v-for="partido in partidos">
         <tarjeta-partido v-bind="partido"></tarjeta-partido>
       </li>
     </ul>
@@ -22,7 +23,10 @@ export default {
     return {
       partidos: [
         {
-          fecha: "09/01",
+          fecha:{
+            month:"09",
+            day:"01"
+          },
           local: "U1",
           lugar: {
             name: "AJ Katzenmaier",
@@ -33,7 +37,10 @@ export default {
           hora: "09:30 AM"
         },
         {
-          fecha: "09/01",
+         fecha:{
+            month:"09",
+            day:"01"
+          },
           local: "U3",
           lugar: {
             name: "Greenbay",
@@ -45,7 +52,10 @@ export default {
           hora: "01:00 PM"
         },
         {
-          fecha: "09/08",
+          fecha:{
+            month:"09",
+            day:"08"
+          },
           local: "U5",
           lugar: {
             name: "Howard A Yeager",
@@ -57,7 +67,10 @@ export default {
           hora: "09:30 AM"
         },
         {
-          fecha: "09/08",
+          fecha:{
+            month:"09",
+            day:"08"
+          },
           local: "U6",
           lugar: {
             name: "Marjorie P Hart",
@@ -69,7 +82,10 @@ export default {
           hora: "01:00 PM"
         },
         {
-          fecha: "09/15",
+          fecha:{
+            month:"09",
+            day:"15"
+          },
           local: "U2",
           lugar: {
             name: "North",
@@ -81,7 +97,10 @@ export default {
           hora: "09:30 AM"
         },
         {
-          fecha: "09/15",
+          fecha:{
+            month:"09",
+            day:"15"
+          },
           local: "U3",
           lugar: {
             name: "AJ Katzenmaier",
@@ -93,7 +112,10 @@ export default {
           hora: "01:00 PM"
         },
         {
-          fecha: "09/22",
+          fecha:{
+            month:"09",
+            day:"22"
+          },
           local: "U1",
           lugar: {
             name: "South",
@@ -105,7 +127,10 @@ export default {
           hora: "09:30 AM"
         },
         {
-          fecha: "09/22",
+          fecha:{
+            month:"09",
+            day:"22"
+          },
           local: "U2",
           lugar: {
             name: "Howard A Yeager",
@@ -117,7 +142,10 @@ export default {
           hora: "01:00 PM"
         },
         {
-          fecha: "09/29",
+          fecha:{
+            month:"09",
+            day:"29"
+          },
           local: "U4",
           lugar: {
             name: "Greenbay",
@@ -131,13 +159,23 @@ export default {
       ]
     };
   },
+  computed:{
+   
+    september: function() {
+if(this.partidos.fecha.month=="09"){
+
+september.push(partidos);
+      return september};
+    // contains only {Alex: {…}, James: {…}}
+    } 
+  },
   props: {},
   components: {
     PartidoDelDia,
     TarjetaPartido
   },
   name: "Partidos"
-};
+}
 </script>
 
 <style scoped>
