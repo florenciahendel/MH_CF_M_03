@@ -1,12 +1,6 @@
 <template>
   <div>
-    <!-- Este es el componente de Sebas -->
-    <!-- <ul class="nostyle">
-      <li v-for="partido in partidos">
-        <partido-del-dia v-bind="partido"></partido-del-dia>
-      </li>
-    </ul>-->
-
+    <button @click="filterElements">Filtrar elementos</button>
     <ul class="nostyle flex">
       <li class="d-inline-block m-1" v-for="partido in partidos">
         <tarjeta-partido v-bind="partido"></tarjeta-partido>
@@ -31,6 +25,7 @@ export default {
           lugar: {
             name: "AJ Katzenmaier",
             address: "24 W. Walton St., Chicago, IL 60610",
+            mapURL: "https://www.google.com/maps/place/AJ+Katzenmaier+Elementary/@41.900229,-87.629069,14z/data=!4m5!3m4!1s0x0:0x15e198c063fc787c!8m2!3d41.9002288!4d-87.6290694?hl=es-419",
             mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5939.306985556562!2d-87.63333948094261!3d41.900308578146!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd34e07f69da7%3A0x15e198c063fc787c!2sAJ+Katzenmaier+Elementary!5e0!3m2!1ses-419!2sar!4v1556575530951!5m2!1ses-419!2sar"
           },
           visitante: "U4",
@@ -159,16 +154,14 @@ export default {
       ]
     };
   },
-  computed:{
-   
-    september: function() {
-if(this.partidos.fecha.month=="09"){
-
-september.push(partidos);
-      return september};
-    // contains only {Alex: {…}, James: {…}}
-    } 
+  methods: {
+    filterElements: function () {
+      console.log(this)
+      this.partidos = this.partidos.filter(partido => partido.lugar.name === "South");
+    }
   },
+  computed:{
+   },
   props: {},
   components: {
     PartidoDelDia,
