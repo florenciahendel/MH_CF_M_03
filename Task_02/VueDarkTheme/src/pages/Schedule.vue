@@ -156,7 +156,7 @@ export default {
   },
   methods: {
     filterElements: function () {
-      console.log(this)
+
       this.partidos = this.partidos.filter(partido => partido.lugar.name === "South");
     }
   },
