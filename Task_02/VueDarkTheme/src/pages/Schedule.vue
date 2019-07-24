@@ -1,5 +1,8 @@
 <template>
   <div>
+    
+
+
     <button @click="filterElements">Filtrar elementos</button>
     <ul class="nostyle flex">
       <li class="d-inline-block m-1" v-for="partido in partidos">
