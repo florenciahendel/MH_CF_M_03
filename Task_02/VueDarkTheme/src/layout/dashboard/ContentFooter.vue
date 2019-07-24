@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer fixed-bottom bg-dark">
+  <footer class="footer sticky-bottom bg-dark">
     <div class="container-fluid bg-dark  text-align-center">
       <ul class="nav">
         <li class="nav-item">
