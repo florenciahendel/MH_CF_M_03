@@ -1,25 +1,26 @@
 <template>
-  <footer class="footer sticky-bottom bg-dark">
-    <div class="container-fluid bg-dark  text-align-center">
+  <footer class="footer sticky-bottom bg-dark d-flex">
+    <div class="container-fluid bg-dark d-flex justify-content-center">
       <ul class="nav">
         <li class="nav-item">
-          <a class="nav-link" href="#/dashboard">
-            <i class="far fa-futbol fa-3x"></i>
+          <a class="nav-link mx-2" href="#/dashboard">
+           <img src="../../../public/img/img/1x/ballmdpi.png" alt="">
+           
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#/schedule">
-            <i class="far fa-calendar-alt fa-3x"></i>
+          <a class="nav-link mx-2" href="#/schedule">
+   <img src="../../../public/img/img/1x/schedulemdpi.png" alt="">
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#/fields">
-            <i class="far fa-map fa-3x"></i>
+          <a class="nav-link mx-2" href="#/fields">
+ <img src="../../../public/img/img/1x/fieldmdpi.png" alt="">
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#/team">
-            <i class="far fa-handshake fa-3x"></i>
+          <a class="nav-link mx-2" href="#/team">
+             <img src="../../../public/img/img/1x/shirtmdpi.png" alt="">
           </a>
         </li>
       </ul>

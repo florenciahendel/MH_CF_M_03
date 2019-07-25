@@ -1,10 +1,15 @@
 <template>
-  <div>
+  <div class="container">
     
+<div class="row d-flex justify-content-center mb-5">
+<p class="mr-3">Pick a date</p>
+<select v-model="selectedDate">
+  <option v-for="partido in partidos" :key="partido.fecha" value="partido.fecha">{{partido.fecha.month}}/{{partido.fecha.day}}</option>
+</select>
 
-
-    <button @click="filterElements">Filtrar elementos</button>
-    <ul class="nostyle flex">
+</div>
+<!--      <button @click="filterElements">Filtrar elementos</button>-->
+    <ul class="nostyle flex row">
       <li class="d-inline-block m-1" v-for="partido in partidos">
         <tarjeta-partido v-bind="partido"></tarjeta-partido>
       </li>
@@ -66,7 +71,7 @@ export default {
         },
         {
           fecha:{
-            month:"09",
+            month:"10",
             day:"08"
           },
           local: "U6",
@@ -163,9 +168,7 @@ export default {
       this.partidos = this.partidos.filter(partido => partido.lugar.name === "South");
     }
   },
-  computed:{
-   },
-  props: {},
+    props: {},
   components: {
     PartidoDelDia,
     TarjetaPartido
