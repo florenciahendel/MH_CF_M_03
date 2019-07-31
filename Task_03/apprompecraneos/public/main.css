@@ -1,0 +1,8 @@
+.mainbody {
+
+padding-bottom: 150px;
+background-image: radial-gradient(#508586, #033949);
+background-repeat: no-repeat;
+}
+
+/* En el caso de .fixed-bottom */
