@@ -47,7 +47,9 @@ export default {
       if (e.target.value) {
         const message = {
           username: this.username,
-          text: e.target.value
+          text: e.target.value,
+          date: (new Date()).getTime()
+          
         };
         fire
           .database()
@@ -58,16 +60,16 @@ export default {
     }
   },
   mounted() {
-    let vm = this;
-    const itemsRef = fire.database().ref("messages");
-    itemsRef.on("value", snapshot => {
-      let data = snapshot.val();
-      let messages = [];
-      Object.keys(data).forEach(key => {
-        messages.push({
-          id: key,
-          username: data[key].username,
-          text: data[key].text
+   let vm = this;
+    const itemsRef = fire.database().ref('messages').orderByChild('date').limitToLast(5);
+    itemsRef.on('value', snapshot => {
+        let data = snapshot.val();
+        let messages = [];
+        Object.keys(data).forEach(key => {
+            messages.push({
+                id: key,
+                username: data[key].username,
+                text: data[key].text
         });
       });
       vm.messages = messages;

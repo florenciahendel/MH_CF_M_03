@@ -6,13 +6,14 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Sign Up</h5>
+        <h4 class="modal-title" id="exampleModalCenterTitle">Sign Up</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-       <p>Let's create a new account !</p>
+       <p>New Account</p>
+    <input type="text" v-model="username" placeholder="Username"><br>
     <input type="text" v-model="email" placeholder="Email"><br>
     <input type="password" v-model="password" placeholder="Password"><br>
       </div>
@@ -32,13 +33,14 @@
     name: 'Signup',
     data() {
       return {
+        username:'',
         email: '',
         password: ''
       }
     },
     methods: {
       signUp: function() {
-        firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(
+        firebase.auth().createUserWithEmailAndPassword(this.username, this.email, this.password).then(
           (user) => {
             alert('Congrats!');
             this.$router.replace('home')
