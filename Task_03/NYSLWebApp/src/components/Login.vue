@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <button class="btn btn-outline-danger" @click="logout"  v-if="is_signed">Log Out</button>
+  <div>     
+    <button class="btn btn-outline-danger mr-1" v-if="is_signed" @click="logout">Log Out</button>
     <button type="button" class="btn btn-light mx-1" v-else data-toggle="modal" data-target="#login-modal" id="toggle-btn">Sign In</button>
     <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
@@ -19,7 +19,7 @@
               <div class="form-group">
                 <input class="form-control" type="password" v-model="password" placeholder="Password">
               </div>
-                <button type="submit" class="btn btn-primary mx-3" @click="login">Login</button>
+                <button type="submit" class="btn btn-primary mx-3" data-dismiss="modal" @click="login">Login</button>
                 <button type="button" class="btn btn-secondary mx-3" data-dismiss="modal">Cancel</button>
             </form>
           </div> 
@@ -56,18 +56,21 @@
       login: function() {
         firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
           (user) => {
-            this.$router.replace('home')
+            alertify.set('notifier','position', 'top-right');
+            alertify.notify('Welcome', 'success',4);
+           
           },
           (err) => {
-            alert('Oops. ' + err.message)
+            alertify.alert('NYSL Schedule', 'Oops. ' + err.message)
           }
         );
       },
        logout: function(){ 
       firebase.auth().signOut().then(function() {
-        // Sign-out successful.
+        alertify.set('notifier','position', 'top-right');
+        alertify.notify('Goodbye', 'success',4);
       }).catch(function(err) {
-        alert('Oops.'+ err.message);
+        alertify.alert('NYSL Schedule', 'Oops.'+ err.message);
       });
     }
     }

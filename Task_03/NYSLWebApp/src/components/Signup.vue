@@ -24,7 +24,7 @@
           <div class="form-group">
             <input class="form-control" type="password" v-model="password" placeholder="Password">
           </div>
-          <button type="submit"  class="btn btn-primary mx-3" @click="signUp">Sign Up</button>
+          <button type="submit" data-dismiss="modal" class="btn btn-primary mx-3" @click="signUp">Sign Up</button>
           <button type="button" class="btn btn-secondary mx-3" data-dismiss="modal">Cancel</button>
        </form>
       </div>
@@ -47,17 +47,17 @@
       }
     },
     methods: {
-      signUp: function() {
-        firebase.auth().createUserWithEmailAndPassword(this.username, this.email, this.password).then(
-          (user) => {
-            alert('Congrats!');
-            this.$router.replace('home')
+       signUp: function() {
+         firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(
+           (user) => {
+             alertify.set('notifier','position', 'top-right');
+             alertify.notify('Congrats!', 'success',4);
           },
-          (err) => {
-            alert('Oops. ' + err.message)
-          }
-        );
-      }
+           (err) => {
+             alertify.alert('NYSL Schedule','Oops. ' + err.message)
+           }
+         );
+       }
     }
   }
 </script>
@@ -65,3 +65,25 @@
 <style scoped>
 
 </style>
+  function registerPasswordUser(email,displayName,password,photoURL){
+    var user = null;
+    //NULLIFY EMPTY ARGUMENTS
+    for (var i = 0; i < arguments.length; i++) {
+      arguments[i] = arguments[i] ? arguments[i] : null;
+    }
+    auth.createUserWithEmailAndPassword(email, password)
+    .then(function () {
+      user = auth.currentUser;
+      user.sendEmailVerification();
+    })
+    .then(function () {
+      user.updateProfile({
+        displayName: displayName,
+        photoURL: photoURL
+      });
+    })
+    .catch(function(error) {
+      console.log(error.message,7000);
+    });
+    console.log('Validation link was sent to ' + email + '.');
+  }
