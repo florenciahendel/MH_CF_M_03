@@ -12,15 +12,23 @@
         </button>
       </div>
       <div class="modal-body">
-       <p>New Account</p>
-    <input type="text" v-model="username" placeholder="Username"><br>
-    <input type="text" v-model="email" placeholder="Email"><br>
-    <input type="password" v-model="password" placeholder="Password"><br>
+       <h5 class="modal-title">New Account</h5>
+       <br>
+       <form>
+         <div class="form-group">
+            <input class="form-control" type="text" v-model="username" placeholder="Username">
+         </div>
+         <div class="form-group">
+            <input class="form-control" type="text" v-model="email" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="password" v-model="password" placeholder="Password">
+          </div>
+          <button type="submit"  class="btn btn-primary mx-3" @click="signUp">Sign Up</button>
+          <button type="button" class="btn btn-secondary mx-3" data-dismiss="modal">Cancel</button>
+       </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary"@click="signUp">Sign Up</button>
-      </div>
+      
     </div>
   </div>
 </div>

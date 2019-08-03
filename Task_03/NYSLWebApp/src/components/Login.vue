@@ -12,13 +12,17 @@
             </button>
           </div>
           <div class="modal-body">
-            <input type="text" v-model="email" placeholder="Email"><br>
-            <input type="password" v-model="password" placeholder="Password"><br>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button class="btn btn-primary" @click="login">Login</button>
-          </div>
+            <form>
+              <div class="form-group">
+                <input class="form-control" type="text" v-model="email" placeholder="Email">
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="password" v-model="password" placeholder="Password">
+              </div>
+                <button type="submit" class="btn btn-primary mx-3" @click="login">Login</button>
+                <button type="button" class="btn btn-secondary mx-3" data-dismiss="modal">Cancel</button>
+            </form>
+          </div> 
         </div>
       </div>
     </div>
