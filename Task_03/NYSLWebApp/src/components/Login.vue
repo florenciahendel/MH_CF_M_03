@@ -1,7 +1,7 @@
 <template>
   <div>
-    <button
-      type="button" class="btn btn-light mx-1" data-toggle="modal" data-target="#login-modal" id="toggle-btn">Sign In</button>
+    <button class="btn btn-outline-danger" @click="logout"  v-if="is_signed">Log Out</button>
+    <button type="button" class="btn btn-light mx-1" v-else data-toggle="modal" data-target="#login-modal" id="toggle-btn">Sign In</button>
     <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -37,10 +37,21 @@
     name: 'Login',
     data() {
       return {
+        is_signed: false,
         email: '',
         password: ''
       }
     },
+    created: function(){
+    var that = this;
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        that.is_signed = true;        
+      } else {
+        that.is_signed = false;
+      }
+    });
+  },
     methods: {
       login: function() {
         firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
@@ -51,7 +62,14 @@
             alert('Oops. ' + err.message)
           }
         );
-      }
+      },
+       logout: function(){ 
+      firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+      }).catch(function(err) {
+        alert('Oops.'+ err.message);
+      });
+    }
     }
   }
 </script>
