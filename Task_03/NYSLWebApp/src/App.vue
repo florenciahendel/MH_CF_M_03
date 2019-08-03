@@ -2,6 +2,9 @@
   <div id="app">
     <!-- Barra navegacion -->
     <Navbar />
+    <div id="home">
+      <h1>Home</h1>
+    </div>
     <div id="field">
       <h1>Field</h1>
     </div>

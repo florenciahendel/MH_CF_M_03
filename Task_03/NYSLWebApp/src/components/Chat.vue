@@ -4,7 +4,7 @@
       <p>You can't chat without a name. What's your name?</p>
       <input class="input-message" type="text" placeholder="Name" @keyup.enter="updateUsername" />
     </div>
-    <div class="row d-inline-bolck justify-content-center align-item-start" v-else>
+    <div class="row justify-content-center align-item-start" v-else>
       <div class="col-lg-3">
        <h4 class="text-center pb-1"> {{username}}</h4>
         

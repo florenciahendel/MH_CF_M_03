@@ -2,7 +2,7 @@
 <div class="container-fluid">
   <footer class="row pt-3 pb-4 d-flex justify-content-center align-items-start bg-primary fixed-bottom">
     <div class="">
-      <a href="#/">
+      <a href="#home">
         <img src="../../public/img/images/ball.png" class="img-fluid"/>
       </a>
     </div>
