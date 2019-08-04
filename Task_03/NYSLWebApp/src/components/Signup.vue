@@ -16,9 +16,6 @@
        <br>
        <form>
          <div class="form-group">
-            <input class="form-control" type="text" v-model="username" placeholder="Username">
-         </div>
-         <div class="form-group">
             <input class="form-control" type="text" v-model="email" placeholder="Email">
           </div>
           <div class="form-group">
@@ -41,49 +38,27 @@
     name: 'Signup',
     data() {
       return {
-        username:'',
         email: '',
         password: ''
-      }
+     } 
     },
-    methods: {
+        methods: {
        signUp: function() {
          firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(
            (user) => {
              alertify.set('notifier','position', 'top-right');
-             alertify.notify('Congrats!', 'success',4);
+             alertify.notify('User Successfully Created', 'success',4);
           },
            (err) => {
              alertify.alert('NYSL Schedule','Oops. ' + err.message)
            }
          );
-       }
-    }
+       },
+   
+  }
   }
 </script>
 
 <style scoped>
 
 </style>
-  function registerPasswordUser(email,displayName,password,photoURL){
-    var user = null;
-    //NULLIFY EMPTY ARGUMENTS
-    for (var i = 0; i < arguments.length; i++) {
-      arguments[i] = arguments[i] ? arguments[i] : null;
-    }
-    auth.createUserWithEmailAndPassword(email, password)
-    .then(function () {
-      user = auth.currentUser;
-      user.sendEmailVerification();
-    })
-    .then(function () {
-      user.updateProfile({
-        displayName: displayName,
-        photoURL: photoURL
-      });
-    })
-    .catch(function(error) {
-      console.log(error.message,7000);
-    });
-    console.log('Validation link was sent to ' + email + '.');
-  }

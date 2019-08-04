@@ -6,17 +6,24 @@
     </div>
     <div class="row justify-content-center align-item-start" v-else>
       <div class="col-lg-3">
-       <h4 class="text-center pb-1"> {{username}}</h4>
-        
-        <textarea class="input-message" cols="30" rows="5" placeholder="New Message" @keyup.enter="sendMessage"></textarea>
+        <h4 class="text-center pb-1">{{username}}</h4>
+
+        <textarea
+          class="input-message"
+          cols="30"
+          rows="5"
+          placeholder="New Message"
+          @keyup.enter="sendMessage"
+        ></textarea>
       </div>
 
       <div class="messages col-lg-3">
         <h4 class="text-center pb-1">Messages</h4>
-        
+
         <div class="message-cont">
           <div class="message" v-for="message in messages">
             <strong>{{message.username}}</strong>
+            <p>{{isToday(message.date)}}</p>
             <p>{{message.text}}</p>
           </div>
         </div>
@@ -27,6 +34,7 @@
 
 <script>
 import fire from "@/fire";
+
 export default {
   name: "Chat",
   data() {
@@ -35,7 +43,12 @@ export default {
       messages: []
     };
   },
+
   methods: {
+    //metodo para formatear la fecha de milisegundos a mes (con nombre), día y año, y hora y minutos en AM/PM
+    isToday(date) {
+      return this.$moment(date).format("lll");
+    },
     updateUsername(e) {
       e.preventDefault();
       if (e.target.value) {
@@ -48,8 +61,7 @@ export default {
         const message = {
           username: this.username,
           text: e.target.value,
-          date: (new Date()).getTime()
-          
+          date: new Date().getTime()
         };
         fire
           .database()
@@ -60,16 +72,21 @@ export default {
     }
   },
   mounted() {
-   let vm = this;
-    const itemsRef = fire.database().ref('messages').orderByChild('date').limitToLast(5);
-    itemsRef.on('value', snapshot => {
-        let data = snapshot.val();
-        let messages = [];
-        Object.keys(data).forEach(key => {
-            messages.push({
-                id: key,
-                username: data[key].username,
-                text: data[key].text
+    let vm = this;
+    let day = new Date();
+        const itemsRef = fire
+      .database()
+      .ref("messages")
+      .orderByChild("date").limitToLast(200);
+    itemsRef.on("value", snapshot => {
+      let data = snapshot.val();
+      let messages = [];
+      Object.keys(data).forEach(key => {
+        messages.push({
+          id: key,
+          username: data[key].username,
+          text: data[key].text,
+          date: data[key].date
         });
       });
       vm.messages = messages;
@@ -79,8 +96,9 @@ export default {
 </script>
 
 <style scoped>
-h4, p{
-  color:#000;
+h4,
+p {
+  color: #000;
 }
 .messages {
   text-align: left;
@@ -92,7 +110,7 @@ h4, p{
   margin: 5px;
   max-width: 95%;
 }
-.input-message{
+.input-message {
   border: 1px solid #000;
   border-radius: 3px;
 }
@@ -103,7 +121,7 @@ h4, p{
   max-height: 300px;
   background-color: rgba(155, 155, 155, 0.3);
 }
-.chat-component{
+.chat-component {
   max-width: 98%;
 }
 </style>

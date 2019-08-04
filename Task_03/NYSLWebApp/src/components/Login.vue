@@ -37,9 +37,9 @@
     name: 'Login',
     data() {
       return {
-        is_signed: false,
         email: '',
-        password: ''
+        password: '',
+        is_signed: false
       }
     },
     created: function(){
@@ -52,12 +52,25 @@
       }
     });
   },
-    methods: {
+  // computed: {
+  //     isLogged: function(){
+  //   firebase.auth().onAuthStateChanged(function(user) {
+  //   if (user) {
+  //   return true;   
+  //   var emailuser =user.email;
+  //   console.log(emailuser);     
+  //   } else {
+  //   return false;
+  //   }
+  //   });
+  //    }
+  //   },
+     methods: {
       login: function() {
         firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(
           (user) => {
             alertify.set('notifier','position', 'top-right');
-            alertify.notify('Welcome', 'success',4);
+            alertify.notify('Successfully Logged In', 'success',4);
            
           },
           (err) => {
@@ -68,7 +81,7 @@
        logout: function(){ 
       firebase.auth().signOut().then(function() {
         alertify.set('notifier','position', 'top-right');
-        alertify.notify('Goodbye', 'success',4);
+        alertify.notify('Successfully Logged Out', 'success',4);
       }).catch(function(err) {
         alertify.alert('NYSL Schedule', 'Oops.'+ err.message);
       });
