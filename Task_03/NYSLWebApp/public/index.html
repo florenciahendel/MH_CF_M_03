@@ -38,8 +38,25 @@
 <!-- Bootstrap theme -->
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.4/build/css/themes/bootstrap.min.css"/>
 
-<!-- Moment -->
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
 
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyChtuQlpTaA6z0gXdvGOh_DqabY0ButEk8",
+    authDomain: "sarasadeprueba.firebaseapp.com",
+    databaseURL: "https://sarasadeprueba.firebaseio.com",
+    projectId: "sarasadeprueba",
+    storageBucket: "",
+    messagingSenderId: "193693937097",
+    appId: "1:193693937097:web:1ce2aacecb939772"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
 
 </head>
 
@@ -50,26 +67,7 @@
   </noscript>
   <div id="app"></div>
 
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
-
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#config-web-app -->
-
-  <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyChtuQlpTaA6z0gXdvGOh_DqabY0ButEk8",
-      authDomain: "sarasadeprueba.firebaseapp.com",
-      databaseURL: "https://sarasadeprueba.firebaseio.com",
-      projectId: "sarasadeprueba",
-      storageBucket: "",
-      messagingSenderId: "193693937097",
-      appId: "1:193693937097:web:1ce2aacecb939772"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-  </script>
+  
   <!-- Instala Server-worker -->
   <script>
     if ('serviceWorker' in navigator) {

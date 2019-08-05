@@ -1,5 +1,6 @@
 <template>
   <div id="Chat" class="chat-component m-1">
+
     <div class="row d-block" v-if="!username">
       <p>You can't chat without a name. What's your name?</p>
       <input class="input-message" type="text" placeholder="Name" @keyup.enter="updateUsername" />
@@ -73,7 +74,7 @@ export default {
   },
   mounted() {
     let vm = this;
-    let day = new Date();
+    
         const itemsRef = fire
       .database()
       .ref("messages")

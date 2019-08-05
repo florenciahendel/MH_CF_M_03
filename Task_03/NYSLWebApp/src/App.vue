@@ -13,12 +13,12 @@
     </div>
     <div id="schedule">
       <h1>Schedule</h1>
-      <Schedule/>
+      <Schedule />
     </div>
-<div id="chat">
-  <Chat/>
-</div>
-    <Footer />
+    <div v-if="signed===true" id="chat">
+      <Chat />
+    </div>
+    <Footer v-if="logged()===true"/>
   </div>
 </template>
 
@@ -26,7 +26,9 @@
 import Navbar from "@/components/Navbar.vue";
 import Schedule from "@/components/Schedule.vue";
 import Footer from "@/components/Footer.vue";
-import Chat from '@/components/Chat.vue'
+import Chat from "@/components/Chat.vue";
+import firebase from "firebase";
+
 export default {
   name: "app",
   components: {
@@ -34,7 +36,35 @@ export default {
     Schedule,
     Footer,
     Chat
+  },
+  //Prueba para chequear el estado de usuario
+  computed: {
+    signed: function() {
+      firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+          console.log("Usuario logueado");
+          return true;
+        } else {
+          console.log("Usuario no-logueado");
+          return false;
+        }
+      });
+    }
+  },
+  methods: {
+    logged:function(){
+    let user= firebase.auth().currentUser;
+    if(user != null){
+      console.log('Usuario autenticado');
+      return true; 
+      
+      }
+    else{
+      console.log('No hay un usuario autenticado');
+      return false;
+    }
   }
+  },
 };
 </script>
 
