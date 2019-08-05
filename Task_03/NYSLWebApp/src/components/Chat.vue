@@ -1,36 +1,30 @@
 <template>
-  <div id="Chat" class="chat-component m-1">
+<div id="Chat" class="chat-component m-1">
 
-    <div class="row d-block" v-if="!username">
-      <p>You can't chat without a name. What's your name?</p>
-      <input class="input-message" type="text" placeholder="Name" @keyup.enter="updateUsername" />
+  <div class="row d-block" v-if="!username">
+    <h4>You can't chat without a name. What's your name?</h4>
+    <input class="input-message" type="text" placeholder="Name" @keyup.enter="updateUsername" />
+  </div>
+  <div class="row justify-content-center align-item-start" v-else>
+    <div class="col-lg-3">
+      <h4 class="text-center pb-1">{{username}}</h4>
+
+      <textarea class="input-message" cols="30" rows="5" placeholder="New Message" @keyup.enter="sendMessage"></textarea>
     </div>
-    <div class="row justify-content-center align-item-start" v-else>
-      <div class="col-lg-3">
-        <h4 class="text-center pb-1">{{username}}</h4>
 
-        <textarea
-          class="input-message"
-          cols="30"
-          rows="5"
-          placeholder="New Message"
-          @keyup.enter="sendMessage"
-        ></textarea>
-      </div>
+    <div class="messages col-lg-3">
+      <h4 class="text-center pb-1">Messages</h4>
 
-      <div class="messages col-lg-3">
-        <h4 class="text-center pb-1">Messages</h4>
-
-        <div class="message-cont">
-          <div class="message" v-for="message in messages">
-            <strong>{{message.username}}</strong>
-            <p>{{isToday(message.date)}}</p>
-            <p>{{message.text}}</p>
-          </div>
+      <div class="message-cont">
+        <div class="message" v-for="message in messages">
+          <strong>{{message.username}}</strong>
+          <p>{{isToday(message.date)}}</p>
+          <p>{{message.text}}</p>
         </div>
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script>
@@ -50,12 +44,14 @@ export default {
     isToday(date) {
       return this.$moment(date).format("lll");
     },
+    //metodo para agregar el username que selecciona el usuario para chatear
     updateUsername(e) {
       e.preventDefault();
       if (e.target.value) {
         this.username = e.target.value;
       }
     },
+    //método de envío de mensajes
     sendMessage(e) {
       e.preventDefault();
       if (e.target.value) {
@@ -72,10 +68,11 @@ export default {
       }
     }
   },
+  //para cargar los mensajes al inicio
   mounted() {
     let vm = this;
-    
-        const itemsRef = fire
+
+    const itemsRef = fire
       .database()
       .ref("messages")
       .orderByChild("date").limitToLast(200);
@@ -101,9 +98,11 @@ h4,
 p {
   color: #000;
 }
+
 .messages {
   text-align: left;
 }
+
 .message {
   border: 1px solid #000;
   border-radius: 3px;
@@ -111,10 +110,12 @@ p {
   margin: 5px;
   max-width: 95%;
 }
+
 .input-message {
   border: 1px solid #000;
   border-radius: 3px;
 }
+
 .message-cont {
   overflow-y: scroll;
   overflow-x: auto;
@@ -122,6 +123,7 @@ p {
   max-height: 300px;
   background-color: rgba(155, 155, 155, 0.3);
 }
+
 .chat-component {
   max-width: 98%;
 }

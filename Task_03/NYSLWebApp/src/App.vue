@@ -15,10 +15,10 @@
       <h1>Schedule</h1>
       <Schedule />
     </div>
-    <div v-if="signed===true" id="chat">
+    <div id="chat">
       <Chat />
     </div>
-    <Footer v-if="logged()===true"/>
+    <Footer />
   </div>
 </template>
 
@@ -42,12 +42,13 @@ export default {
     signed: function() {
       firebase.auth().onAuthStateChanged(function(user) {
         if (user) {
-          console.log("Usuario logueado");
-          return true;
+         // console.log("Usuario logueado");
+          this.signed= true;
         } else {
-          console.log("Usuario no-logueado");
-          return false;
+      //    console.log("Usuario no-logueado");
+          this.signed = false;
         }
+  
       });
     }
   },
@@ -55,12 +56,12 @@ export default {
     logged:function(){
     let user= firebase.auth().currentUser;
     if(user != null){
-      console.log('Usuario autenticado');
+    //  console.log('Usuario autenticado');
       return true; 
       
       }
     else{
-      console.log('No hay un usuario autenticado');
+    //  console.log('No hay un usuario autenticado');
       return false;
     }
   }
