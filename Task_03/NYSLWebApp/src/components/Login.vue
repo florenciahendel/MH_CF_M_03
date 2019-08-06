@@ -39,7 +39,7 @@
       return {
         email: '',
         password: '',
-        is_signed: false
+        is_signed:false
       }
     },
     created: function(){
@@ -52,19 +52,7 @@
       }
     });
   },
-  // computed: {
-  //     isLogged: function(){
-  //   firebase.auth().onAuthStateChanged(function(user) {
-  //   if (user) {
-  //   return true;   
-  //   var emailuser =user.email;
-  //   console.log(emailuser);     
-  //   } else {
-  //   return false;
-  //   }
-  //   });
-  //    }
-  //   },
+  
      methods: {
       login: function() {
         firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(

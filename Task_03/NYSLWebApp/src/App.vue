@@ -2,7 +2,7 @@
   <div id="app">
     <!-- Barra navegacion -->
     <Navbar />
-    <div id="home">
+    <!-- <div id="home">
       <h1>Home</h1>
     </div>
     <div id="field">
@@ -10,9 +10,9 @@
     </div>
     <div id="team">
       <h1>Team</h1>
-    </div>
+    </div> -->
     <div id="schedule">
-      <h1>Schedule</h1>
+      <!-- <h1>Schedule</h1> -->
       <Schedule />
     </div>
     <div id="chat">
@@ -36,36 +36,37 @@ export default {
     Schedule,
     Footer,
     Chat
-  },
-  //Prueba para chequear el estado de usuario
-  computed: {
-    signed: function() {
-      firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-         // console.log("Usuario logueado");
-          this.signed= true;
-        } else {
-      //    console.log("Usuario no-logueado");
-          this.signed = false;
-        }
-  
-      });
-    }
-  },
-  methods: {
-    logged:function(){
-    let user= firebase.auth().currentUser;
-    if(user != null){
-    //  console.log('Usuario autenticado');
-      return true; 
-      
-      }
-    else{
-    //  console.log('No hay un usuario autenticado');
-      return false;
-    }
   }
-  },
+  //,
+  //Prueba para chequear el estado de usuario
+  // computed: {
+  //   signed: function() {
+  //     firebase.auth().onAuthStateChanged(function(user) {
+  //       if (user) {
+  //        // console.log("Usuario logueado");
+  //         this.signed= true;
+  //       } else {
+  //     //    console.log("Usuario no-logueado");
+  //         this.signed = false;
+  //       }
+  
+  //     });
+  //   }
+  // },
+  // methods: {
+  //   logged:function(){
+  //   let user= firebase.auth().currentUser;
+  //   if(user != null){
+  //   //  console.log('Usuario autenticado');
+  //     return true; 
+      
+  //     }
+  //   else{
+  //   //  console.log('No hay un usuario autenticado');
+  //     return false;
+  //   }
+  // }
+  // },
 };
 </script>
 

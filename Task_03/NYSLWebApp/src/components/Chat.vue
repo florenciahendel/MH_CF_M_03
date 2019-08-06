@@ -1,30 +1,37 @@
 <template>
-<div id="Chat" class="chat-component m-1">
-
-  <div class="row d-block" v-if="!username">
-    <h4>You can't chat without a name. What's your name?</h4>
-    <input class="input-message" type="text" placeholder="Name" @keyup.enter="updateUsername" />
-  </div>
-  <div class="row justify-content-center align-item-start" v-else>
-    <div class="col-lg-3">
-      <h4 class="text-center pb-1">{{username}}</h4>
-
-      <textarea class="input-message" cols="30" rows="5" placeholder="New Message" @keyup.enter="sendMessage"></textarea>
+  <div id="Chat" v-show="is_signed" class="chat-component mx-auto">
+    <div class="card chat-container" v-if="!username">
+      <div class="card-header bg-success">
+        <h4>NYSL Chat</h4>
+      </div>
+      <div class="card-body">
+        <h5>Hi! Type your name to start</h5>
+        <br>
+        <input class="input-message" type="text" placeholder="Name" @keyup.enter="updateUsername" />
+      </div>
     </div>
-
-    <div class="messages col-lg-3">
-      <h4 class="text-center pb-1">Messages</h4>
-
-      <div class="message-cont">
-        <div class="message" v-for="message in messages">
+        
+    <div class="card chat-container" v-else>
+      <div class="card-header bg-success">
+        <h4>NYSL Chat</h4>
+      </div>
+      <div class="card-body messages-container">
+        <div class="message" v-for="message in messages" :key="message.id">
           <strong>{{message.username}}</strong>
           <p>{{isToday(message.date)}}</p>
           <p>{{message.text}}</p>
         </div>
       </div>
+      <div class="card-footer bg-success">
+        <form>
+          <div class="form-group">
+            <input class="form-control" type="text" @keyup.enter="sendMessage" placeholder="New Message">
+          </div>
+          <button type="submit" class="btn btn-primary mx-3" @click="sendMessage">Send</button>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -35,7 +42,8 @@ export default {
   data() {
     return {
       username: "",
-      messages: []
+      messages: [],
+      is_signed:false
     };
   },
 
@@ -68,6 +76,16 @@ export default {
       }
     }
   },
+  created: function(){
+    var that = this;
+    fire.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        that.is_signed = true;        
+      } else {
+        that.is_signed = false;
+      }
+    });
+  },
   //para cargar los mensajes al inicio
   mounted() {
     let vm = this;
@@ -94,37 +112,37 @@ export default {
 </script>
 
 <style scoped>
+
+.chat-component{
+max-width:500px;
+}
+
 h4,
 p {
   color: #000;
 }
 
-.messages {
-  text-align: left;
+.chat-container {
+/*max-width:500px;*/
+max-height:400px;
+max-width:95%;
+}
+
+.messages-container {
+  overflow-y: scroll;
+  overflow-x: auto;
+  /* max-width:98%; */
 }
 
 .message {
   border: 1px solid #000;
   border-radius: 3px;
-  padding: 5px;
+  padding: 3px;
   margin: 5px;
-  max-width: 95%;
+  /* max-width: 98%; */
+  text-align: left;
+  background-color: rgba(92, 184, 92, 0.2);
 }
 
-.input-message {
-  border: 1px solid #000;
-  border-radius: 3px;
-}
 
-.message-cont {
-  overflow-y: scroll;
-  overflow-x: auto;
-  border: #000 solid 2px;
-  max-height: 300px;
-  background-color: rgba(155, 155, 155, 0.3);
-}
-
-.chat-component {
-  max-width: 98%;
-}
 </style>

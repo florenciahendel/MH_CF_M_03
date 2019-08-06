@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button type="button" class="btn btn-light mx-1" data-toggle="modal" data-target="#signup-modal"
+    <button type="button" v-show="!is_signed" class="btn btn-light mx-1" data-toggle="modal" data-target="#signup-modal"
       id="toggle-btn">Sign Up</button>
   <div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -39,9 +39,20 @@
     data() {
       return {
         email: '',
-        password: ''
+        password: '',
+        is_signed: false
     } 
     },
+    created: function(){
+    var that = this;
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        that.is_signed = true;        
+      } else {
+        that.is_signed = false;
+      }
+    });
+  },
     methods: {
       signUp: function() {
         firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(

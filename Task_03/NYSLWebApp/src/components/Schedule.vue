@@ -4,10 +4,22 @@
       <h1 class="text-light">SCHEDULE</h1>
     </div>
     <div class="row d-block justify-content-center mx-auto mb-5">
-      <select v-model="selectedDate">
-        <option value selected disabled>Select month</option>
+      <select class="col-2 mx-2" v-model="selectedMonth">
+        <option value selected disabled>Select Month</option>
+        <option value="All">All</option>
         <option value="09">September</option>
         <option value="10">October</option>
+      </select>
+
+      <select class="col-2 mx-2" v-model="selectedTeam">
+        <option value selected disabled>Select Team</option>
+        <option value="All">All</option>
+        <option value="U1">U1</option>
+        <option value="U2">U2</option>
+        <option value="U3">U3</option>
+        <option value="U4">U4</option>
+        <option value="U5">U5</option>
+        <option value="U6">U6</option>
       </select>
 
       <div class="row justify-content-center mx-auto my-5">
@@ -28,7 +40,8 @@ import Footer from "@/components/Footer";
 export default {
   data() {
     return {
-      selectedDate: "",
+      selectedMonth: "All",
+      selectedTeam:"All",
       partidos: [
         {
           fecha: {
@@ -83,7 +96,7 @@ export default {
         },
         {
           fecha: {
-            month: "10",
+            month: "09",
             day: "08"
           },
           local: "U6",
@@ -187,10 +200,29 @@ export default {
     };
   },
   computed: {
+
+    // partidosFiltrados: function() {
+    //   return this.partidos.filter(
+    //     partido => partido.fecha.month === this.selectedDate
+    //   );
+    // }
+
+    
+//Esta función filtra por Mes, o por Equipo, o combina ambos
     partidosFiltrados: function() {
-      return this.partidos.filter(
-        partido => partido.fecha.month === this.selectedDate
-      );
+      var month = this.selectedMonth;
+      var team = this.selectedTeam;
+
+      if(month === "All" && team === "All") {
+        //save performance, juste return the default array:
+        return this.partidos;
+      } else {
+        return this.partidos.filter(function(partido) {
+          //return the array after passing it through the filter function:
+          return  (month === 'All' || partido.fecha.month === month) && (team === 'All'  || partido.local === team || partido.visitante === team);	 
+
+        });
+      }
     }
   },
   props: {},
