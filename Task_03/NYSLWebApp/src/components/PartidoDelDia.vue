@@ -1,9 +1,10 @@
 <template>
-  <div class="card text-center bg-light" style="width: 18rem;">
+  <div class="card text-center bg-light" style="width: 20rem;">
     <h4 class="card-title">{{fecha.month}}/{{fecha.day}} - {{hora}}</h4>
+    <br>
     <h4 class="card-subtitle">{{local}} vs. {{visitante}}</h4>
-    <button class="btn btn-dark" @click="details=!details">Details</button>
-      <div v-show="details">
+    <br>
+       <div>
         <div class="embed-responsive embed-responsive-4by3">
           <iframe class="iframe" v-bind:src="lugar.mapEmbed" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
@@ -21,12 +22,8 @@ export default {
     lugar: String,
     hora: String
   },
-  name: "TarjetaPartido",
-  data(){
-    return{
-      details:false
-    }
-  }
+  name: "PartidoDelDia"
+  
 };
 
 </script>
