@@ -11,13 +11,14 @@
     <div id="team">
       <h1>Team</h1>
     </div> -->
+    <div id="chat" class="container mx-auto my-4">
+      <Chat />
+    </div>
     <div id="schedule">
       <!-- <h1>Schedule</h1> -->
       <Schedule />
     </div>
-    <div id="chat">
-      <Chat />
-    </div>
+    
     <Footer />
   </div>
 </template>
@@ -37,42 +38,13 @@ export default {
     Footer,
     Chat
   }
-  //,
-  //Prueba para chequear el estado de usuario
-  // computed: {
-  //   signed: function() {
-  //     firebase.auth().onAuthStateChanged(function(user) {
-  //       if (user) {
-  //        // console.log("Usuario logueado");
-  //         this.signed= true;
-  //       } else {
-  //     //    console.log("Usuario no-logueado");
-  //         this.signed = false;
-  //       }
-  
-  //     });
-  //   }
-  // },
-  // methods: {
-  //   logged:function(){
-  //   let user= firebase.auth().currentUser;
-  //   if(user != null){
-  //   //  console.log('Usuario autenticado');
-  //     return true; 
-      
-  //     }
-  //   else{
-  //   //  console.log('No hay un usuario autenticado');
-  //     return false;
-  //   }
-  // }
-  // },
+ 
 };
 </script>
 
 <style>
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

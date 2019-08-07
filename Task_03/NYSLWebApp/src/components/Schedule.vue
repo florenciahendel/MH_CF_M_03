@@ -4,16 +4,22 @@
       <h1 class="text-light">SCHEDULE</h1>
     </div>
     <div class="row d-block justify-content-center mx-auto mb-5">
-      <select class="col-2 mx-2" v-model="selectedMonth">
-        <option value selected disabled>Select Month</option>
+
+      <label for="month">
+        <span>Select Month: </span>
+      <select id="month" class="col-6" v-model="selectedMonth">
+        <!-- <option value selected disabled>Select Month</option> -->
         <option value="All">All</option>
         <option value="09">September</option>
         <option value="10">October</option>
       </select>
+      </label>
 
-      <select class="col-2 mx-2" v-model="selectedTeam">
-        <option value selected disabled>Select Team</option>
-        <option value="All">All</option>
+      <label for="month">
+        <span>Select Team: </span>
+      <select class="col-6" v-model="selectedTeam">
+        <!-- <option value selected disabled>Select Team</option> -->
+        <option value="All">All teams</option>
         <option value="U1">U1</option>
         <option value="U2">U2</option>
         <option value="U3">U3</option>
@@ -21,10 +27,10 @@
         <option value="U5">U5</option>
         <option value="U6">U6</option>
       </select>
-
+      </label>
       <div class="row justify-content-center mx-auto my-5">
-        <ul class="nostyle row d-flex">
-          <li class="d-inline-block m-2" v-for="partido in partidosFiltrados">
+        <ul class="nostyle row d-block">
+          <li class="d-block my-2" v-for="partido in partidosFiltrados">
             <tarjeta-partido v-bind="partido"></tarjeta-partido>
           </li>
         </ul>
